@@ -1,26 +1,23 @@
 # Ember-power-select-blockless
 
-This README outlines the details of collaborating on this Ember addon.
+Blockless version of ember-power-select
 
-## Installation
+## Instalation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+`ember install ember-power-select-blockless`
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+This component uses internally ember-power-select, but uses the `get` helper to render an attribute
+of each option in the block
 
-## Running Tests
+All options are the same than those in ember-power-select with the addition of a new one, `labelPath`,
+which tells the component which attribute of each option should use to render each option of the list
+as well as the content of the trigger.
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+```hbs
+{{power-select-blockless options=users selected=user labelPath="name" onchange=(action (mut user))}}
+```
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+Another refinemens is that by default the `searchField` will default to the value in `labelPath`, so
+you don't need to specify it.

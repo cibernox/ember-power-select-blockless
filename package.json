@@ -1,6 +1,6 @@
 {
   "name": "ember-power-select-blockless",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -41,7 +41,9 @@
   },
   "keywords": [
     "ember-addon",
-    "ember-power-select-addon"
+    "ember-power-select-addon",
+    "blockless",
+    "ember-power-select"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
