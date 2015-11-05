@@ -1,3 +1,5 @@
 <h2 id="title">Welcome to Ember</h2>
 
-{{outlet}}
+{{power-select-blockless options=users selected=user labelPath="name" onchange=(action (mut user))}}
+<br>
+{{power-select-blockless options=numbers selected=number onchange=(action (mut number))}}
