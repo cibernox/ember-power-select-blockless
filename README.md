@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/cibernox/ember-power-select-blockless.svg)](https://travis-ci.org/cibernox/ember-power-select-blockless)
+[![Code Climate](https://codeclimate.com/github/cibernox/ember-power-select-blockless/badges/gpa.svg)](https://codeclimate.com/github/cibernox/ember-power-select-blockless)
+[![Ember Observer Score](http://emberobserver.com/badges/ember-power-select-blockless.svg)](http://emberobserver.com/addons/ember-power-select-blockless)
+
 # Ember-power-select-blockless
 
 Blockless version of [Ember Power Select](https://github.com/cibernox/ember-power-select)
