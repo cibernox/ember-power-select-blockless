@@ -6,7 +6,7 @@
 
 Blockless version of [Ember Power Select](https://github.com/cibernox/ember-power-select)
 
-## Instalation
+## Installation
 
 `ember install ember-power-select-blockless`
 
