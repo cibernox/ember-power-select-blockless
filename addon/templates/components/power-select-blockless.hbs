@@ -1,5 +1,5 @@
 {{#if labelPath}}
-  {{#component concreteComponentName
+  {{#power-select
       options=options
       selected=selected
       onchange=onchange
@@ -23,9 +23,9 @@
       as |option|}}
 
       {{get option labelPath}}
-  {{/component}}
+  {{/power-select}}
 {{else}}
-  {{#component concreteComponentName
+  {{#power-select
       options=options
       selected=selected
       onchange=onchange
@@ -49,5 +49,5 @@
       as |option|}}
 
       {{option}}
-  {{/component}}
+  {{/power-select}}
 {{/if}}
