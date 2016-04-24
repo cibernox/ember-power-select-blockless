@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { clickTrigger } from '../../helpers/ember-power-select';
 
 const users = [
   { name: 'John Connor', age: 20 },
@@ -33,7 +34,7 @@ test('Renders the property in the given path on each option and the trigger when
   this.render(hbs`{{power-select-blockless options=users labelPath="name" selected=user onchange=(action (mut user))}}`);
 
   assert.equal(this.$().text().trim(), 'Joe Hardy');
-  Ember.run(() => this.$('.ember-power-select-trigger').click());
+  clickTrigger();
   assert.equal($('.ember-power-select-option').length, users.length);
   assert.equal($('.ember-power-select-option:eq(4)').text().trim(), 'Chefa Neo');
 });
@@ -46,7 +47,7 @@ test('Renders each string in the list without needing any labelPath and the trig
   this.render(hbs`{{power-select-blockless options=names selected=name onchange=(action (mut name))}}`);
 
   assert.equal(this.$().text().trim(), 'Joe Hardy');
-  Ember.run(() => this.$('.ember-power-select-trigger').click());
+  clickTrigger();
   assert.equal($('.ember-power-select-option').length, names.length);
   assert.equal($('.ember-power-select-option:eq(4)').text().trim(), 'Chefa Neo');
 });
@@ -62,7 +63,7 @@ test('Filters using the label path by default', function(assert) {
   this.render(hbs`{{power-select-blockless options=users labelPath="name" selected=user onchange=(action (mut user))}}`);
 
   assert.equal(this.$().text().trim(), 'Joe Hardy');
-  Ember.run(() => this.$('.ember-power-select-trigger').click());
+  clickTrigger();
   Ember.run(() => typeInSearch('lip'));
   assert.equal($('.ember-power-select-option').length, 1);
   assert.equal($('.ember-power-select-option:eq(0)').text().trim(), 'Meg Lipmsy');
@@ -76,7 +77,7 @@ test('Filters using the string itself then the options are strings', function(as
   this.render(hbs`{{power-select-blockless options=names selected=name onchange=(action (mut name))}}`);
 
   assert.equal(this.$().text().trim(), 'Joe Hardy');
-  Ember.run(() => this.$('.ember-power-select-trigger').click());
+  clickTrigger();
   Ember.run(() => typeInSearch('lip'));
   assert.equal($('.ember-power-select-option').length, 1);
   assert.equal($('.ember-power-select-option:eq(0)').text().trim(), 'Meg Lipmsy');
