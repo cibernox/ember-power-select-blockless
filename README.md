@@ -15,9 +15,8 @@ Blockless version of [Ember Power Select](https://github.com/cibernox/ember-powe
 This component uses internally ember-power-select, but uses the `get` helper to render an specific attribute
 in each item of the list.
 
-All options are the same than those in ember-power-select with the addition of a new one, `labelPath`,
-which tells the component which attribute of each option should use to render each option of the list
-as well as the content of the trigger.
+All options are the same as those in ember-power-select but with the addition of one new one, `labelPath`. This
+ tells the component which attribute from options to use (to render each option of the list). That same attribute will also be the one rendered as the content of the trigger.
 
 ```hbs
 {{power-select-blockless options=users selected=user labelPath="name" onchange=(action (mut user))}}
