@@ -1,6 +1,6 @@
 {
   "name": "ember-power-select-blockless",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Blockess version of Ember Power Select",
   "directories": {
     "doc": "doc",
