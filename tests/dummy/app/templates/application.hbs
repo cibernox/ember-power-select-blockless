@@ -1,5 +1,11 @@
 <h2 id="title">Welcome to Ember</h2>
 
+<h3>Power Select</h3>
 {{power-select-blockless options=users selected=user labelPath="name" onchange=(action (mut user))}}
 <br>
 {{power-select-blockless options=numbers selected=number onchange=(action (mut number))}}
+
+<h3>Power Select Multiple</h3>
+{{power-select-multiple-blockless options=users selected=multiUser labelPath="name" onchange=(action (mut multiUser))}}
+<br>
+{{power-select-multiple-blockless options=numbers selected=multiNumber onchange=(action (mut multiNumber))}}
