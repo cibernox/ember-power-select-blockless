@@ -19,6 +19,5 @@ const numbers = [
 
 export default Ember.Controller.extend({
   users: users,
-  user: null,
-  numbers: numbers
+  numbers: numbers,
 });
