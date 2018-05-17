@@ -1,7 +1,8 @@
-import Ember from 'ember';
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, fillIn, find, findAll } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { clickTrigger } from '../../helpers/ember-power-select';
+import { clickTrigger } from 'ember-power-select/test-support/helpers'
 
 const users = [
   { name: 'John Connor', age: 20 },
@@ -15,71 +16,68 @@ const users = [
 
 const names = users.map(u => u.name);
 
-function typeInSearch(text) {
-  $('.ember-power-select-search input, .ember-power-select-trigger-multiple-input').val(text);
-  $('.ember-power-select-search input, .ember-power-select-trigger-multiple-input').trigger('input');
-}
-
-moduleForComponent('power-select-blockless', 'Integration | Component | power select blockless', {
-  integration: true
-});
-
 // Rendering
 
-test('Renders the property in the given path on each option and the trigger when options are objects', function(assert) {
-  assert.expect(3);
+module('Integration | Component | power select blockless', function(hooks) {
+  setupRenderingTest(hooks);
 
-  this.users = users;
-  this.user = users[1];
-  this.render(hbs`{{power-select-blockless options=users labelPath="name" selected=user onchange=(action (mut user))}}`);
+  test('Renders the property in the given path on each option and the trigger when options are objects', async function(assert) {
+    assert.expect(3);
 
-  assert.equal(this.$().text().trim(), 'Joe Hardy');
-  clickTrigger();
-  assert.equal($('.ember-power-select-option').length, users.length);
-  assert.equal($('.ember-power-select-option:eq(4)').text().trim(), 'Chefa Neo');
-});
+    this.users = users;
+    this.user = users[1];
+    await render(hbs`{{power-select-blockless options=users labelPath="name" selected=user onchange=(action (mut user))}}`);
 
-test('Renders each string in the list without needing any labelPath and the trigger when options are strings', function(assert) {
-  assert.expect(3);
+    assert.equal(this.$().text().trim(), 'Joe Hardy');
+    await clickTrigger();
+    assert.equal(findAll('.ember-power-select-option').length, users.length);
+    assert.equal(findAll('.ember-power-select-option')[4].textContent.trim(), 'Chefa Neo');
+  });
 
-  this.names = names;
-  this.name = names[1];
-  this.render(hbs`{{power-select-blockless options=names selected=name onchange=(action (mut name))}}`);
+  test('Renders each string in the list without needing any labelPath and the trigger when options are strings', async function(assert) {
+    assert.expect(3);
 
-  assert.equal(this.$().text().trim(), 'Joe Hardy');
-  clickTrigger();
-  assert.equal($('.ember-power-select-option').length, names.length);
-  assert.equal($('.ember-power-select-option:eq(4)').text().trim(), 'Chefa Neo');
-});
+    this.names = names;
+    this.name = names[1];
+    await render(hbs`{{power-select-blockless options=names selected=name onchange=(action (mut name))}}`);
+
+    assert.equal(this.$().text().trim(), 'Joe Hardy');
+    await clickTrigger();
+    assert.equal(findAll('.ember-power-select-option').length, names.length);
+    assert.equal(findAll('.ember-power-select-option')[4].textContent.trim(), 'Chefa Neo');
+  });
 
 
-// Filtering
+  // Filtering
 
-test('Filters using the label path by default', function(assert) {
-  assert.expect(3);
+  test('Filters using the label path by default', async function(assert) {
+    assert.expect(3);
 
-  this.users = users;
-  this.user = users[1];
-  this.render(hbs`{{power-select-blockless options=users labelPath="name" selected=user onchange=(action (mut user))}}`);
+    this.users = users;
+    this.user = users[1];
+    await render(hbs`{{power-select-blockless options=users labelPath="name" selected=user onchange=(action (mut user))}}`);
 
-  assert.equal(this.$().text().trim(), 'Joe Hardy');
-  clickTrigger();
-  Ember.run(() => typeInSearch('lip'));
-  assert.equal($('.ember-power-select-option').length, 1);
-  assert.equal($('.ember-power-select-option:eq(0)').text().trim(), 'Meg Lipmsy');
-});
+    assert.equal(this.$().text().trim(), 'Joe Hardy');
+    await clickTrigger();
+    let el = find('.ember-power-select-search input, .ember-power-select-trigger-multiple-input');
+    await fillIn(el, 'lip');
+    assert.equal(findAll('.ember-power-select-option').length, 1);
+    assert.equal(findAll('.ember-power-select-option')[0].textContent.trim(), 'Meg Lipmsy');
+  });
 
-test('Filters using the string itself then the options are strings', function(assert) {
-  assert.expect(3);
+  test('Filters using the string itself then the options are strings', async function(assert) {
+    assert.expect(3);
 
-  this.names = names;
-  this.name = names[1];
-  this.render(hbs`{{power-select-blockless options=names selected=name onchange=(action (mut name))}}`);
+    this.names = names;
+    this.name = names[1];
+    await render(hbs`{{power-select-blockless options=names selected=name onchange=(action (mut name))}}`);
 
-  assert.equal(this.$().text().trim(), 'Joe Hardy');
-  clickTrigger();
-  Ember.run(() => typeInSearch('lip'));
-  assert.equal($('.ember-power-select-option').length, 1);
-  assert.equal($('.ember-power-select-option:eq(0)').text().trim(), 'Meg Lipmsy');
+    assert.equal(this.$().text().trim(), 'Joe Hardy');
+    await clickTrigger();
+    let el = find('.ember-power-select-search input, .ember-power-select-trigger-multiple-input');
+    await fillIn(el, 'lip');
+    assert.equal(findAll('.ember-power-select-option').length, 1);
+    assert.equal(findAll('.ember-power-select-option')[0].textContent.trim(), 'Meg Lipmsy');
+  });
 });
 

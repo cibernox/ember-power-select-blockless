@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
 const users = [
   { name: 'John Connor', age: 20 },
@@ -17,7 +17,7 @@ const numbers = [
   'four'
 ];
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   users: users,
   numbers: numbers,
 });

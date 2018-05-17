@@ -26,3 +26,4 @@ Another refinement is that by default the `searchField` will default to the valu
 you don't need to specify it unless it's different.
 
 When `options` is just an array of strings/numbers `labelPath` is not required.
+
