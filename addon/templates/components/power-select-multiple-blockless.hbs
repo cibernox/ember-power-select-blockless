@@ -1,5 +1,5 @@
 {{#if labelPath}}
-  {{#power-select-multiple
+  {{#component powerSelectMultipleComponent
       afterOptionsComponent=afterOptionsComponent
       allowClear=allowClear
       ariaDescribedBy=ariaDescribedBy
@@ -54,9 +54,9 @@
       as |option|}}
 
       {{get option labelPath}}
-  {{/power-select-multiple}}
+  {{/component}}
 {{else}}
-  {{#power-select-multiple
+  {{#component powerSelectMultipleComponent
       afterOptionsComponent=afterOptionsComponent
       allowClear=allowClear
       ariaDescribedBy=ariaDescribedBy
@@ -111,5 +111,5 @@
       as |option|}}
 
       {{option}}
-  {{/power-select-multiple}}
+  {{/component}}
 {{/if}}
